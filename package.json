@@ -14,13 +14,18 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^2.5.0",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "vuetify": "^1.2.4"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
+    "babel-eslint": "^9.0.0",
     "eslint": "^4.15.0",
+    "eslint-config-prettier": "^3.0.1",
     "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0"
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-vue": "^4.7.1",
+    "prettier": "^1.14.3"
   }
 }

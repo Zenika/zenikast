@@ -10,7 +10,12 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'zenikast' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+      }
     ]
   },
   /*
@@ -24,7 +29,7 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    extend (config, { isDev, isClient }) {
+    extend(config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: 'pre',
@@ -33,10 +38,11 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    vendor: ['vuetify']
   },
-  modules: [
-    '@nuxtjs/pwa',
-  ],
+  modules: ['nuxt-sass-resources-loader', '@nuxtjs/pwa'],
+  sassResources: ['~/assets/style/variables.scss'],
+  plugins: ['~plugins/vuetify.js'],
+  css: ['~/assets/style/app.scss']
 }
-
