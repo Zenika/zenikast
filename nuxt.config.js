@@ -41,8 +41,8 @@ module.exports = {
     },
     vendor: ['vuetify']
   },
-  modules: ['nuxt-sass-resources-loader', '@nuxtjs/pwa'],
+  modules: ['nuxt-sass-resources-loader'],
   sassResources: ['~/assets/style/variables.scss'],
-  plugins: ['~plugins/vuetify.js'],
+  plugins: ['~plugins/vuetify.js', '~plugins/firebase.js'],
   css: ['~/assets/style/app.scss']
 }
