@@ -1,55 +1,56 @@
 <template>
-  <div>
-    <nuxt/>
-  </div>
+  <v-app id="app">
+    <!-- Menus -->
+    <navigation-drawer />
+    <nav-bar-top />
+
+    <!-- Main content -->
+    <v-content class="main-content">
+      <v-container class="container" fluid>
+        <nuxt class="pt-3" />
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import NavBarTop from '@/components/menus/NavBarTop'
+import NavigationDrawer from '@/components/menus/NavigationDrawer'
+import Podcast from '@/components/podcasts/Podcast'
+import PodcastList from '@/components/podcasts/PodcastList'
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+export default {
+  components: { NavBarTop, NavigationDrawer, Podcast, PodcastList }
 }
+</script>
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
+<style lang="scss">
+#app {
+  .main-content {
+    position: absolute;
+    top: $bar-height;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    padding: 0 !important;
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
+    .container {
+      padding: 0;
+      height: 100%;
+    }
+  }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
+  @media screen and (max-width: 900px) {
+    .main-content {
+      width: 100%;
+    }
+  }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+  @media screen and (min-width: 900px) {
+    .main-content {
+      width: 900px;
+    }
+  }
 }
 </style>
