@@ -11,5 +11,10 @@ const config = {
 }
 
 /* Firebase init */
-firebase.initializeApp(config)
+try {
+  firebase.initializeApp(config)
+} catch (err) {
+  console.log(err)
+}
+
 firebase.firestore().settings({ timestampsInSnapshots: true })

@@ -1,11 +1,8 @@
 <template>
   <nuxt-link :to="`podcasts/${podcast.id}`" class="root">
     <v-list-tile :key="podcast.id">
-      <v-list-tile-avatar>
-        <img :src="thumbnail">
-      </v-list-tile-avatar>
       <v-list-tile-content>
-        <v-list-tile-titletitle>{{ podcast.title }}</v-list-tile-titletitle>
+        <v-list-tile-title>{{ podcast.title }}</v-list-tile-title>
       </v-list-tile-content>
       <v-list-tile-action>
         <v-icon>play_arrow</v-icon>
