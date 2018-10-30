@@ -1,0 +1,14 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /podcasts/{podcastId} {
+      allow read;
+    }
+
+    match /usersInfos/{userId} {
+       allow get: if request.auth.uid == userId;
+       allow list: if request.auth.uid == resource.data.userId;
+       allow create: if request.auth.uid == userId;
+       allow update, delete: if request.auth.uid == resource.data.userId;
+    }
+  }
+}
