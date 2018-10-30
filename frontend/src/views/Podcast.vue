@@ -31,9 +31,7 @@
       </v-expansion-panel>
 
       <!-- Tracks list -->
-      <div class="tracks-list">
-        <iframe v-for="track in podcast.tracks" :key="track" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" :src="track"></iframe>
-      </div>
+      <podcast-tracks-list :tracks="podcast.tracks"></podcast-tracks-list>
     </v-card>
   </div>
 </template>
@@ -42,9 +40,10 @@
 import { mapGetters } from 'vuex';
 import PodcastBanner from '@/components/podcasts/PodcastBanner';
 import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
+import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
 
 export default {
-  components: { PodcastBanner, PodcastParticipantsList },
+  components: { PodcastBanner, PodcastParticipantsList, PodcastTracksList },
   props: { podcastId: String },
   computed: {
     ...mapGetters('podcasts', ['podcastById']),
@@ -72,15 +71,6 @@ export default {
 
     .icon {
       margin-right: 10px;
-    }
-
-    .tracks-list {
-      padding: 40px;
-
-      @media screen and (max-width: 900px) {
-        padding: 0px;
-        padding-top: 20px;
-      }
     }
   }
 }

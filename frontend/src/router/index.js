@@ -9,7 +9,7 @@ const router = new Router({
   routes: [
     ...authenticationRoutes,
     ...podcastsRoutes,
-    { path: '*', redirect: '/login' }
+    { path: '*', redirect: '/podcasts' }
   ]
 });
 
