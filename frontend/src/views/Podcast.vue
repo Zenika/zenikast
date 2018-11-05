@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import PodcastBanner from '@/components/podcasts/PodcastBanner';
 import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
 import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
@@ -45,12 +45,16 @@ import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
 export default {
   components: { PodcastBanner, PodcastParticipantsList, PodcastTracksList },
   props: { podcastId: String },
+  mounted() {
+    this.addPodcastSeenToUser(this.podcastId);
+  },
   computed: {
     ...mapGetters('podcasts', ['podcastById']),
     podcast() {
       return this.podcastById(this.podcastId);
     }
-  }
+  },
+  methods: mapActions('authentication', ['addPodcastSeenToUser'])
 };
 </script>
 

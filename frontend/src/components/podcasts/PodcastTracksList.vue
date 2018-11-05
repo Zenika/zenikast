@@ -19,6 +19,11 @@ export default {
 .tracks-list /deep/ {
   .player-wrapper {
     padding: 20px;
+
+    @media screen and (max-width: 900px) {
+      padding: 0px;
+      padding-bottom: 20px;
+    }
   }
 
   .aplayer-icon-mode {

@@ -2,14 +2,14 @@
   <div class="wrapper">
     <!-- Header -->
     <v-subheader class="header">
-      <span v-if="podcastsList">{{ podcastsList.length }} podcasts disponibles</span>
+      <span v-if="podcastsList">{{ podcastsList.length }} podcasts disponibles - {{ newPodcasts.length }} nouveaux</span>
     </v-subheader>
 
     <!-- Podcasts List -->
     <v-list v-if="podcastsList" class="list" two-line>
       <template v-for="(podcast, index) in podcastsOrderedBy('createTimestamp', 'desc')">
         <v-divider :key="index" v-if="index !== 0"></v-divider>
-        <podcasts-list-item :podcast="podcast" :key="podcast.id"></podcasts-list-item>
+        <podcasts-list-item @click.native="podcastClicked(podcast)" :isNew="isPodcastNew(podcast.id)" :podcast="podcast" :key="podcast.id"></podcasts-list-item>
       </template>
     </v-list>
   </div>
@@ -23,7 +23,19 @@ export default {
   components: { PodcastsListItem },
   computed: {
     ...mapState('podcasts', ['podcastsList']),
-    ...mapGetters('podcasts', ['podcastsOrderedBy'])
+    ...mapGetters('podcasts', [
+      'podcastsOrderedBy',
+      'isPodcastNew',
+      'newPodcasts'
+    ])
+  },
+  methods: {
+    podcastClicked(podcast) {
+      this.$router.push({
+        name: 'podcast',
+        params: { podcastId: podcast.id }
+      });
+    }
   }
 };
 </script>
