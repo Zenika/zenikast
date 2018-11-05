@@ -5,13 +5,13 @@ import firebase from 'firebase/app';
 import store from '@/store';
 import router from '@/router';
 
+null;
+
 /**
  * Callback fired on user login
  * @param {Object} user
  */
 const login = async user => {
-  store.dispatch('authentication/setUser', user);
-
   const userInfos = await fetchUserInfos(user.uid);
 
   userInfos
@@ -22,16 +22,18 @@ const login = async user => {
     handleUserCloudMessagingTokens();
   }
 
-  bindPodcasts();
+  const podcastListener = bindPodcasts();
+  store.dispatch('podcasts/setPodcastsListener', podcastListener);
 };
 
 /**
  * Callback fire on user logout
  */
 const logout = () => {
-  store.dispatch('authentication/setUser', null);
-  store.dispatch('authentication/setUserInfos', null);
   router.push('/login');
+  store.dispatch('podcasts/setPodcasts', null);
+  store.dispatch('podcasts/unsubscribePodcastsListener');
+  store.dispatch('authentication/setUserInfos', null);
 };
 
 /**

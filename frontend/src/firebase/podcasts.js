@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import store from '@/store';
 
 /**
- * Bind podcasts list to firestore podcasts collection
+ * Bind firestore podcasts collection to podcasts list from store
  */
 export const bindPodcasts = () =>
   firebase

@@ -6,11 +6,11 @@
     <v-toolbar-title class="toolbar-title">{{ appTitle }}</v-toolbar-title>
     <v-chip class="offline-chip" v-if="!networkOnLine" label small outline color="white">Hors ligne</v-chip>
 
-    <template v-if="user">
+    <template v-if="userInfos">
       <v-spacer></v-spacer>
       <v-menu class="menu" offset-y>
         <v-avatar slot="activator" size="36px">
-          <img v-if="providerData" :src="providerData.photoURL" alt="Avatar">
+          <img :src="userInfos.photoURL" alt="Avatar">
         </v-avatar>
         <v-list class="menu-list ">
           <v-list-tile to="/user">
@@ -28,13 +28,12 @@
 
 <script>
 import firebase from 'firebase/app';
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   computed: {
     ...mapState('config', ['appTitle', 'networkOnLine']),
-    ...mapState('authentication', ['user']),
-    ...mapGetters('authentication', ['providerData'])
+    ...mapState('authentication', ['userInfos'])
   },
   methods: {
     logout() {

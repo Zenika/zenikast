@@ -23,13 +23,15 @@ export default {
    * @param {Object} getters
    * @param {Object} rootState
    */
-  isPodcastNew: (state, getters, rootState) => podcastId =>
-    isNil(
+  isPodcastNew: (state, getters, rootState) => podcastId => {
+    if (isNil(rootState.authentication.userInfos)) return null;
+
+    return isNil(
       rootState.authentication.userInfos.podcastsSeen.find(
         podcastSeenId => podcastSeenId === podcastId
       )
-    ),
-
+    );
+  },
   /**
    * Get all new podcasts id
    * @param {Object} state
@@ -37,6 +39,9 @@ export default {
    * @param {Object} rootState
    */
   newPodcasts: (state, getters, rootState) => {
+    if (isNil(state.podcastsList) || isNil(rootState.authentication.userInfos))
+      return null;
+
     const podcastsIds = state.podcastsList.map(podcast => podcast.id);
     const newPodcastsIds = difference(
       podcastsIds,

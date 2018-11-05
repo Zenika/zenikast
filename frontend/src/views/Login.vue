@@ -1,15 +1,15 @@
 <template>
   <div class="wrapper">
 
-    <img alt="Logo" v-show="user !== undefined && !user" class="logo-img" src="@/assets/logo-title.png" />
+    <img alt="Logo" v-show="userInfos !== undefined && !userInfos" class="logo-img" src="@/assets/logo-title.png" />
 
     <!-- Loader -->
-    <div v-if="user === undefined">
+    <div v-if="userInfos === undefined">
       <v-progress-circular :size="60" color="primary" indeterminate></v-progress-circular>
     </div>
 
     <!-- Auth UI -->
-    <div v-show="user !== undefined && !user" id="firebaseui-auth-container"></div>
+    <div v-show="userInfos !== undefined && !userInfos" id="firebaseui-auth-container"></div>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import firebase from 'firebase/app';
 import firebaseui from 'firebaseui';
 
 export default {
-  computed: mapState('authentication', ['user']),
+  computed: mapState('authentication', ['userInfos']),
   mounted() {
     this.initFirebaseUI();
   },

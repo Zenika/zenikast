@@ -9,7 +9,7 @@
     </v-snackbar>
 
     <!-- Menus -->
-    <nav-bar-top v-if="user"></nav-bar-top>
+    <nav-bar-top v-if="userInfos"></nav-bar-top>
 
     <!-- Main content -->
     <v-content class="main-content">
@@ -33,7 +33,7 @@ export default {
   components: { NavBarTop },
   computed: {
     ...mapState('config', ['newContentAvailable']),
-    ...mapState('authentication', ['user']),
+    ...mapState('authentication', ['userInfos']),
     ...mapState('misc', ['currentMsg'])
   },
   methods: {

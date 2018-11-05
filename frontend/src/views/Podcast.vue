@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { isNil } from 'lodash';
+import { mapGetters, mapActions, mapState } from 'vuex';
 import PodcastBanner from '@/components/podcasts/PodcastBanner';
 import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
 import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
@@ -45,10 +46,18 @@ import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
 export default {
   components: { PodcastBanner, PodcastParticipantsList, PodcastTracksList },
   props: { podcastId: String },
-  mounted() {
-    this.addPodcastSeenToUser(this.podcastId);
+  watch: {
+    userInfos: {
+      handler(value) {
+        if (isNil(value)) return;
+
+        this.addPodcastSeenToUser(this.podcastId);
+      },
+      immediate: true
+    }
   },
   computed: {
+    ...mapState('authentication', ['userInfos']),
     ...mapGetters('podcasts', ['podcastById']),
     podcast() {
       return this.podcastById(this.podcastId);

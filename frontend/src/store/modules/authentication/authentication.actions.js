@@ -7,7 +7,12 @@ export default {
   setUserInfos: ({ commit }, value) => commit(SET_USER_INFOS, value),
 
   createNewUserInfos: async ({ dispatch }, user) => {
+    const providerData = user.providerData[0];
+    const { displayName, photoURL, email } = providerData;
     const userInfos = {
+      displayName,
+      photoURL,
+      email,
       userId: user.uid,
       cloudMessagingTokens: [],
       podcastsSeen: []

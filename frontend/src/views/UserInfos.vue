@@ -3,13 +3,13 @@
     <v-list-tile avatar>
       <v-list-tile-action>
         <v-avatar slot="activator" size="36px">
-          <img v-if="providerData" :src="providerData.photoURL" alt="Avatar">
+          <img :src="userInfos.photoURL" alt="Avatar">
         </v-avatar>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>{{providerData.displayName}}</v-list-tile-title>
+        <v-list-tile-title>{{userInfos.displayName}}</v-list-tile-title>
         <v-list-tile-sub-title>
-          {{providerData.email}}
+          {{userInfos.email}}
         </v-list-tile-sub-title>
       </v-list-tile-content>
     </v-list-tile>
@@ -17,11 +17,10 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters('authentication', ['providerData']),
     ...mapState('authentication', ['user', 'userInfos'])
   }
 };

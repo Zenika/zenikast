@@ -1,17 +1,22 @@
 <template>
   <div class="wrapper">
-    <!-- Header -->
-    <v-subheader class="header">
-      <span v-if="podcastsList">{{ podcastsList.length }} podcasts disponibles - {{ newPodcasts.length }} nouveaux</span>
-    </v-subheader>
+    <template v-if="podcastsList">
+      <!-- Header -->
+      <v-subheader class="header">
+        <span>{{ podcastsList.length }} podcasts disponibles - {{ newPodcasts.length }} nouveaux</span>
+      </v-subheader>
 
-    <!-- Podcasts List -->
-    <v-list v-if="podcastsList" class="list" two-line>
-      <template v-for="(podcast, index) in podcastsOrderedBy('createTimestamp', 'desc')">
-        <v-divider :key="index" v-if="index !== 0"></v-divider>
-        <podcasts-list-item @click.native="podcastClicked(podcast)" :isNew="isPodcastNew(podcast.id)" :podcast="podcast" :key="podcast.id"></podcasts-list-item>
-      </template>
-    </v-list>
+      <!-- Podcasts List -->
+      <v-list class="list" two-line>
+        <template v-for="(podcast, index) in podcastsOrderedBy('createTimestamp', 'desc')">
+          <v-divider :key="index" v-if="index !== 0"></v-divider>
+          <podcasts-list-item @click.native="podcastClicked(podcast)" :isNew="isPodcastNew(podcast.id)" :podcast="podcast" :key="podcast.id"></podcasts-list-item>
+        </template>
+      </v-list>
+    </template>
+    <div v-else class="spinner">
+      <v-progress-circular :size="50" color="primary" indeterminate></v-progress-circular>
+    </div>
   </div>
 </template>
 
@@ -47,6 +52,14 @@ export default {
   overflow: scroll;
   height: 100%;
   width: 100%;
+
+  .spinner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   .header {
     left: 0;
