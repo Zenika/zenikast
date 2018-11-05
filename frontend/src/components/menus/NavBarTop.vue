@@ -1,7 +1,8 @@
 <template>
   <v-toolbar class="toolbar" dark :color="networkOnLine ? 'primary': 'secondary'" app>
     <router-link class="logo-wrapper" to="/podcasts">
-      <img alt="Logo" class="logo" src="@/assets/logo.png">
+      <img v-if="$route.path === '/podcasts'" alt="Logo" class="logo" src="@/assets/logo.png">
+      <v-icon v-else>keyboard_backspace</v-icon>
     </router-link>
     <v-toolbar-title class="toolbar-title">{{ appTitle }}</v-toolbar-title>
     <v-chip class="offline-chip" v-if="!networkOnLine" label small outline color="white">Hors ligne</v-chip>
@@ -50,7 +51,7 @@ export default {
   .logo-wrapper {
     height: 70%;
     margin-right: 10px;
-    display: block;
+    display: flex;
 
     .logo {
       height: 100%;
