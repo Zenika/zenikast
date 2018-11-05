@@ -31,7 +31,8 @@ export default {
         : new firebaseui.auth.AuthUI(firebase.auth());
       ui.start('#firebaseui-auth-container', {
         signInFlow: 'popup',
-        signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
+        signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
+        signInSuccessUrl: '/#/podcasts'
       });
     }
   }

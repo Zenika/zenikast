@@ -22,8 +22,6 @@ const login = async user => {
     handleUserCloudMessagingTokens();
   }
 
-  router.push('/podcasts');
-
   bindPodcasts();
 };
 

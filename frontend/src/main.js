@@ -1,5 +1,4 @@
 import './registerServiceWorker';
-import '@/router/router.interceptor';
 import './firebase';
 import 'vuetify/src/stylus/app.styl';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';

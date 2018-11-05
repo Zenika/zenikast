@@ -13,7 +13,9 @@ export default {
    * @param {Object} state
    */
   podcastById: state => podcastId =>
-    state.podcastsList.find(podcast => podcast.id === podcastId),
+    state.podcastsList
+      ? state.podcastsList.find(podcast => podcast.id === podcastId)
+      : null,
 
   /**
    * Check if podcast is new for user
