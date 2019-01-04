@@ -3,7 +3,11 @@
     <router-link class="logo-wrapper" to="/podcasts">
       <img alt="Logo" class="logo" src="@/assets/logo.png">
     </router-link>
-    <v-toolbar-title class="toolbar-title">{{ appTitle }}</v-toolbar-title>
+    <v-toolbar-title class="toolbar-title">
+      <router-link class="clean-link" to="/podcasts">
+        {{ appTitle }}
+      </router-link>
+    </v-toolbar-title>
     <v-chip class="offline-chip" v-if="!networkOnLine" label small outline color="white">Hors ligne</v-chip>
 
     <template v-if="userInfos">
@@ -55,6 +59,11 @@ export default {
     .logo {
       height: 100%;
     }
+  }
+
+  .clean-link {
+    color: #fff;
+    text-decoration: none;
   }
 
   .v-toolbar__content {
