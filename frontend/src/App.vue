@@ -9,7 +9,7 @@
     </v-snackbar>
 
     <!-- Menus -->
-    <nav-bar-top v-if="userInfos"></nav-bar-top>
+    <nav-bar-top></nav-bar-top>
 
     <!-- Main content -->
     <v-content class="main-content">

@@ -1,5 +1,5 @@
 <template>
-  <v-list class="wrapper" two-line>
+  <v-list v-if="userInfos" class="wrapper" two-line>
     <v-list-tile avatar>
       <v-list-tile-action>
         <v-avatar slot="activator" size="36px">
@@ -7,7 +7,9 @@
         </v-avatar>
       </v-list-tile-action>
       <v-list-tile-content>
-        <v-list-tile-title>{{userInfos.displayName}}</v-list-tile-title>
+        <v-list-tile-title>
+          {{userInfos.displayName}}
+        </v-list-tile-title>
         <v-list-tile-sub-title>
           {{userInfos.email}}
         </v-list-tile-sub-title>

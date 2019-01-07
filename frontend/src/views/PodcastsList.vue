@@ -3,14 +3,21 @@
     <template v-if="podcastsList">
       <!-- Header -->
       <v-subheader class="header">
-        <span>{{ podcastsList.length }} podcasts disponibles - {{ newPodcasts.length }} nouveaux</span>
+        <span>
+          {{ podcastsList.length }} podcasts disponibles
+          <span v-if="isLoggedIn">- {{ newPodcasts.length }} nouveaux</span>
+        </span>
       </v-subheader>
-
       <!-- Podcasts List -->
       <v-list class="list" two-line>
         <template v-for="(podcast, index) in podcastsOrderedBy('createTimestamp', 'desc')">
           <v-divider :key="index" v-if="index !== 0"></v-divider>
-          <podcasts-list-item @click.native="podcastClicked(podcast)" :isNew="isPodcastNew(podcast.id)" :podcast="podcast" :key="podcast.id"></podcasts-list-item>
+          <podcasts-list-item
+            @click.native="podcastClicked(podcast)"
+            :isNew="isPodcastNew(podcast.id)"
+            :podcast="podcast"
+            :key="podcast.id">
+          </podcasts-list-item>
         </template>
       </v-list>
     </template>
@@ -32,7 +39,9 @@ export default {
       'podcastsOrderedBy',
       'isPodcastNew',
       'newPodcasts'
-    ])
+    ]),
+    ...mapState('authentication', ['userInfos']),
+    ...mapGetters('authentication', ['isLoggedIn'])
   },
   methods: {
     podcastClicked(podcast) {

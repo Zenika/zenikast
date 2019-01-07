@@ -3,7 +3,7 @@ export default [
     path: '/login',
     name: 'login',
     meta: {
-      authNotRequired: true
+      authRequired: false
     },
     component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
   },

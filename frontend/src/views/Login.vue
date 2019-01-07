@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-
     <img alt="Logo" v-show="userInfos !== undefined && !userInfos" class="logo-img" src="@/assets/logo-title.png" />
 
     <!-- Loader -->
@@ -10,6 +9,11 @@
 
     <!-- Auth UI -->
     <div v-show="userInfos !== undefined && !userInfos" id="firebaseui-auth-container"></div>
+
+    <!-- Already logged in message -->
+    <div class="wrapper" v-show="userInfos">
+      <h2>Vous êtes déjà connecté.</h2>
+    </div>
   </div>
 </template>
 
@@ -46,6 +50,7 @@ export default {
   width: 100%;
   height: 100%;
   display: flex;
+  padding: 50px;
   justify-content: center;
   align-items: center;
   flex-direction: column;

@@ -7,7 +7,6 @@ export default {
     commit(SET_PODCASTS_LISTENER, value),
   unsubscribePodcastsListener: ({ dispatch, state }) => {
     if (isNil(state.podcastsListener)) return;
-
     state.podcastsListener();
     dispatch('setPodcastsListener', null);
   }
