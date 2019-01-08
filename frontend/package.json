@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
     "firebase": "^5.4.2",
+    "firebase-tools": "^6.2.2",
     "firebaseui": "^3.4.0",
     "is_js": "^0.9.0",
     "lodash": "^4.17.10",
