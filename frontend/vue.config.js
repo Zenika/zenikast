@@ -2,7 +2,8 @@ const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin');
 
 module.exports = {
   configureWebpack: {
-    plugins: [new VuetifyLoaderPlugin()]
+    plugins: [new VuetifyLoaderPlugin()],
+    externals: 'hls.js'
   },
   pwa: {
     /* Example of dynamic caching : */

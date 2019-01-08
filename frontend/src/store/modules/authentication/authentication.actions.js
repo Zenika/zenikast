@@ -17,7 +17,6 @@ export default {
       cloudMessagingTokens: [],
       podcastsSeen: []
     };
-
     const createdUserInfos = await firebaseUserInfos.createUserInfos(userInfos);
     dispatch('setUserInfos', createdUserInfos);
   },
@@ -27,7 +26,6 @@ export default {
       ...state.userInfos,
       ...value
     };
-
     const newUserInfos = await firebaseUserInfos.updateUserInfos(
       updatedUserInfos
     );
@@ -40,11 +38,14 @@ export default {
         podcastSeenId => podcastSeenId === podcastId
       )
     );
-
     if (isPodcastNotSeen) {
       dispatch('updateUserInfos', {
         podcastsSeen: [...state.userInfos.podcastsSeen, podcastId]
       });
     }
+  },
+
+  logout: ({ dispatch }) => {
+    dispatch('setUserInfos', null);
   }
 };

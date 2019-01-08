@@ -27,21 +27,29 @@
       </v-menu>
     </template>
 
+    <template v-else>
+      <v-spacer></v-spacer>
+      <router-link class="clean-link" to="/login">
+        <span>Connexion</span>
+      </router-link>
+    </template>
   </v-toolbar>
 </template>
 
 <script>
 import firebase from 'firebase/app';
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
     ...mapState('config', ['appTitle', 'networkOnLine']),
-    ...mapState('authentication', ['userInfos'])
+    ...mapState('authentication', ['userInfos']),
+    ...mapActions('authentication', { userLogout: 'logout' })
   },
   methods: {
     logout() {
       firebase.auth().signOut();
+      this.userLogout;
     }
   }
 };

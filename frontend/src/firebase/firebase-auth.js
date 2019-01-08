@@ -3,9 +3,6 @@ import { fetchUserInfos } from './users-infos';
 import { handleUserCloudMessagingTokens } from './firebase-cloud-messaging';
 import firebase from 'firebase/app';
 import store from '@/store';
-import router from '@/router';
-
-null;
 
 /**
  * Callback fired on user login
@@ -21,7 +18,9 @@ const login = async user => {
   if (firebase.messaging) {
     handleUserCloudMessagingTokens();
   }
+};
 
+const listenPodcasts = () => {
   const podcastListener = bindPodcasts();
   store.dispatch('podcasts/setPodcastsListener', podcastListener);
 };
@@ -29,8 +28,7 @@ const login = async user => {
 /**
  * Callback fire on user logout
  */
-const logout = () => {
-  router.push('/login');
+export const logout = () => {
   store.dispatch('podcasts/setPodcasts', null);
   store.dispatch('podcasts/unsubscribePodcastsListener');
   store.dispatch('authentication/setUserInfos', null);
@@ -39,5 +37,13 @@ const logout = () => {
 /**
  * Init authentication handling
  */
-export const initAuthHandling = () =>
-  firebase.auth().onAuthStateChanged(user => (user ? login(user) : logout()));
+export const initAuthHandling = () => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      login(user);
+    } else {
+      store.dispatch('authentication/setUserInfos', null);
+    }
+    listenPodcasts();
+  });
+};

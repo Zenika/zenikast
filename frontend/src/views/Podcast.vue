@@ -50,7 +50,6 @@ export default {
     userInfos: {
       handler(value) {
         if (isNil(value)) return;
-
         this.addPodcastSeenToUser(this.podcastId);
       },
       immediate: true

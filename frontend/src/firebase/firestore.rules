@@ -1,16 +1,16 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-  function authenticated() { return request.auth.uid != null }
-  function isMe() { return request.auth.uid == request.resource.data.userId }
-  
+    function authenticated() { return request.auth.uid != null }
+    function isMe() { return request.auth.uid == request.resource.data.userId }
+
     match /podcasts/{podcastId} {
-      allow get: if authenticated();
-			allow list: if authenticated();
+      allow get
+      allow list
     }
 
     match /usersInfos/{userId} {
        allow get: if authenticated();
-			 allow list: if authenticated();
+       allow list: if authenticated();
        allow create: if authenticated() && isMe();
        allow update, delete: if authenticated() && isMe();
     }
