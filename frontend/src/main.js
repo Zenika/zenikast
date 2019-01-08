@@ -9,8 +9,16 @@ import router from './router';
 import store from './store';
 import misc from '@/services/miscellaneous';
 import Vuetify from 'vuetify/lib';
+import VueAnalytics from 'vue-analytics';
 
 Vue.use(Vuetify);
+
+if (process.env.NODE_ENV === 'production') {
+  Vue.use(VueAnalytics, {
+    id: 'UA-126886254-2',
+    router
+  });
+}
 
 Vue.config.productionTip = false;
 
