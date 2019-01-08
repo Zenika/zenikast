@@ -28,9 +28,7 @@ const listenPodcasts = () => {
 /**
  * Callback fire on user logout
  */
-export const logout = () => {
-  store.dispatch('podcasts/setPodcasts', null);
-  store.dispatch('podcasts/unsubscribePodcastsListener');
+const logout = () => {
   store.dispatch('authentication/setUserInfos', null);
 };
 
@@ -42,7 +40,7 @@ export const initAuthHandling = () => {
     if (user) {
       login(user);
     } else {
-      store.dispatch('authentication/setUserInfos', null);
+      logout();
     }
     listenPodcasts();
   });
