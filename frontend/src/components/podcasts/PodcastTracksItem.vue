@@ -19,7 +19,7 @@ export default {
         title: this.track.name,
         artist: 'Voyage au centre de la tech',
         src: `https://docs.google.com/uc?id=${
-          this.track.audioId
+          this.track.hash
         }&export=download`,
         pic: LogoUrl
       }

@@ -30,8 +30,8 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
 
-      <!-- Tracks list -->
-      <podcast-tracks-list :tracks="podcast.tracks"></podcast-tracks-list>
+      <!-- Track player -->
+      <podcast-tracks-item :track="podcast"></podcast-tracks-item>
     </v-card>
   </div>
 </template>
@@ -41,10 +41,10 @@ import { isNil } from 'lodash';
 import { mapGetters, mapActions, mapState } from 'vuex';
 import PodcastBanner from '@/components/podcasts/PodcastBanner';
 import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
-import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
+import PodcastTracksItem from '@/components/podcasts/PodcastTracksItem';
 
 export default {
-  components: { PodcastBanner, PodcastParticipantsList, PodcastTracksList },
+  components: { PodcastBanner, PodcastParticipantsList, PodcastTracksItem },
   props: { podcastId: String },
   watch: {
     userInfos: {

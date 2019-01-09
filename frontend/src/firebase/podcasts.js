@@ -2,21 +2,17 @@ import firebase from 'firebase/app';
 import store from '@/store';
 
 /**
- * Bind firestore podcasts collection to podcasts list from store
+ * Bind firestore tracks collection to track list from store
  */
 export const bindPodcasts = () =>
   firebase
     .firestore()
-    .collection('podcasts')
+    .collection('tracks')
     .onSnapshot(querySnapshot => {
-      const podcasts = [];
-      querySnapshot.forEach(doc =>
-        podcasts.push({ id: doc.id, ...doc.data() })
+      const tracks = [];
+      querySnapshot.forEach(doc => tracks.push({ id: doc.id, ...doc.data() }));
+      tracks.forEach(
+        track => (track.createTimestamp = track.createTimestamp.toDate())
       );
-
-      podcasts.forEach(
-        podcast => (podcast.createTimestamp = podcast.createTimestamp.toDate())
-      );
-
-      store.dispatch('podcasts/setPodcasts', podcasts);
+      store.dispatch('podcasts/setPodcasts', tracks);
     });
