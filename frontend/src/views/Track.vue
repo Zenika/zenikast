@@ -39,9 +39,9 @@
 <script>
 import { isNil } from 'lodash';
 import { mapGetters, mapActions, mapState } from 'vuex';
-import PodcastBanner from '@/components/podcasts/PodcastBanner';
-import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
-import PodcastTracksItem from '@/components/podcasts/PodcastTracksItem';
+import PodcastBanner from '@/components/tracks/TrackBanner';
+import PodcastParticipantsList from '@/components/tracks/TrackParticipantsList';
+import PodcastTracksItem from '@/components/tracks/TrackItem';
 
 export default {
   components: { PodcastBanner, PodcastParticipantsList, PodcastTracksItem },

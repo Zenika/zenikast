@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import podcastsRoutes from './podcasts.routes';
+import podcastsRoutes from './tracks.routes';
 import authenticationRoutes from './authentication.routes';
 
 Vue.use(Router);

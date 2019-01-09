@@ -6,7 +6,7 @@ export default [
       authRequired: false
     },
     component: () =>
-      import(/* webpackChunkName: "podcasts-list" */ '@/views/PodcastsList.vue')
+      import(/* webpackChunkName: "podcasts-list" */ '@/views/TrackList.vue')
   },
   {
     path: '/podcasts/:podcastId',
@@ -16,6 +16,6 @@ export default [
     },
     props: true,
     component: () =>
-      import(/* webpackChunkName: "podcast" */ '@/views/Podcast.vue')
+      import(/* webpackChunkName: "podcast" */ '@/views/Track.vue')
   }
 ];

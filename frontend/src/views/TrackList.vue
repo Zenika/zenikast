@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import PodcastsListItem from '@/components/podcasts/PodcastsListItem';
+import PodcastsListItem from '@/components/tracks/TrackListItem';
 import { mapState, mapGetters } from 'vuex';
 
 export default {

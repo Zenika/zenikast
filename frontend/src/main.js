@@ -11,7 +11,7 @@ import misc from '@/services/miscellaneous';
 import Vuetify from 'vuetify/lib';
 import VueAnalytics from 'vue-analytics';
 
-import { bindPodcasts } from './firebase/podcasts';
+import { bindPodcasts } from './firebase/tracks';
 
 Vue.use(Vuetify);
 
