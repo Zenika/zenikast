@@ -18,9 +18,7 @@ export default {
         theme: '#0A497E',
         title: this.track.name,
         artist: 'Voyage au centre de la tech',
-        src: `https://docs.google.com/uc?id=${
-          this.track.hash
-        }&export=download`,
+        src: `https://docs.google.com/uc?id=${this.track.hash}&export=download`,
         pic: LogoUrl
       }
     };

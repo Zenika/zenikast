@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import podcastsRoutes from './tracks.routes';
+import tracksRoutes from './tracks.routes';
 import authenticationRoutes from './authentication.routes';
 
 Vue.use(Router);
@@ -8,8 +8,8 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     ...authenticationRoutes,
-    ...podcastsRoutes,
-    { path: '*', redirect: '/podcasts' }
+    ...tracksRoutes,
+    { path: '*', redirect: '/tracks' }
   ]
 });
 

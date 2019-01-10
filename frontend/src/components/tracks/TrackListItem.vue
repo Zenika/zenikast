@@ -6,7 +6,7 @@
       </v-list-tile-avatar>
     </v-list-tile-action>
     <v-list-tile-content>
-      <v-list-tile-title>{{podcast.name}}</v-list-tile-title>
+      <v-list-tile-title>{{track.name}}</v-list-tile-title>
       <v-list-tile-sub-title>
         <strong>{{formatedDate}}</strong>
       </v-list-tile-sub-title>
@@ -23,10 +23,10 @@
 import { format } from 'date-fns';
 
 export default {
-  props: { podcast: Object, isNew: Boolean },
+  props: { track: Object, isNew: Boolean },
   computed: {
     formatedDate() {
-      return format(this.podcast.createTimestamp, 'DD/MM/YYYY');
+      return format(this.track.createTimestamp, 'DD/MM/YYYY');
     }
   }
 };

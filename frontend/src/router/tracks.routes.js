@@ -1,21 +1,14 @@
 export default [
   {
-    path: '/podcasts',
-    name: 'podcasts',
-    meta: {
-      authRequired: false
-    },
+    path: '/tracks',
+    name: 'tracks',
     component: () =>
-      import(/* webpackChunkName: "podcasts-list" */ '@/views/TrackList.vue')
+      import(/* webpackChunkName: "track-list" */ '@/views/TrackList.vue')
   },
   {
-    path: '/podcasts/:podcastId',
-    name: 'podcast',
-    meta: {
-      authRequired: false
-    },
+    path: '/tracks/:trackId',
+    name: 'track',
     props: true,
-    component: () =>
-      import(/* webpackChunkName: "podcast" */ '@/views/Track.vue')
+    component: () => import(/* webpackChunkName: "track" */ '@/views/Track.vue')
   }
 ];

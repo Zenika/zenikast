@@ -1,13 +1,12 @@
 import { isNil } from 'lodash';
-import { SET_PODCASTS, SET_PODCASTS_LISTENER } from './mutation-types';
+import { SET_TRACKS, SET_TRACKS_LISTENER } from './mutation-types';
 
 export default {
-  setPodcasts: ({ commit }, podcasts) => commit(SET_PODCASTS, podcasts),
-  setPodcastsListener: ({ commit }, value) =>
-    commit(SET_PODCASTS_LISTENER, value),
-  unsubscribePodcastsListener: ({ dispatch, state }) => {
-    if (isNil(state.podcastsListener)) return;
-    state.podcastsListener();
-    dispatch('setPodcastsListener', null);
+  setTracks: ({ commit }, tracks) => commit(SET_TRACKS, tracks),
+  setTracksListener: ({ commit }, value) => commit(SET_TRACKS_LISTENER, value),
+  unsubscribeTracksListener: ({ dispatch, state }) => {
+    if (isNil(state.tracksListener)) return;
+    state.tracksListener();
+    dispatch('setTracksListener', null);
   }
 };

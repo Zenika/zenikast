@@ -4,7 +4,7 @@ import store from '@/store';
 /**
  * Bind firestore tracks collection to track list from store
  */
-export const bindPodcasts = () =>
+export const bindTracks = () =>
   firebase
     .firestore()
     .collection('tracks')
@@ -14,5 +14,5 @@ export const bindPodcasts = () =>
       tracks.forEach(
         track => (track.createTimestamp = track.createTimestamp.toDate())
       );
-      store.dispatch('podcasts/setPodcasts', tracks);
+      store.dispatch('tracks/setTracks', tracks);
     });

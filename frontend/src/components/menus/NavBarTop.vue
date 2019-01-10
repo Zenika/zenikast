@@ -1,11 +1,11 @@
 <template>
   <v-toolbar class="toolbar" dark :color="networkOnLine ? 'primary': 'secondary'" app>
-    <router-link class="logo-wrapper" to="/podcasts">
-      <img v-if="$route.path === '/podcasts'" alt="Logo" class="logo" src="@/assets/logo.png">
+    <router-link class="logo-wrapper" to="/tracks">
+      <img v-if="$route.path === '/tracks'" alt="Logo" class="logo" src="@/assets/logo.png">
       <v-icon v-else>keyboard_backspace</v-icon>
     </router-link>
     <v-toolbar-title class="toolbar-title">
-      <router-link class="clean-link" to="/podcasts">
+      <router-link class="clean-link" to="/tracks">
         {{ appTitle }}
       </router-link>
     </v-toolbar-title>
@@ -39,8 +39,7 @@
 
 <script>
 import firebase from 'firebase/app';
-import { logout as firebaseLogout } from '@/firebase/firebase-auth'
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   computed: {

@@ -39,7 +39,7 @@ export default {
       ui.start('#firebaseui-auth-container', {
         signInFlow: 'popup',
         signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
-        signInSuccessUrl: '/#/podcasts'
+        signInSuccessUrl: '/#/tracks'
       });
     }
   }

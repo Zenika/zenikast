@@ -1,4 +1,4 @@
 export default {
-  podcastsList: null,
-  podcastsListener: null
+  trackList: null,
+  tracksListener: null
 };

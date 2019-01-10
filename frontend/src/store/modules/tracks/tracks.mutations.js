@@ -1,6 +1,6 @@
-import { SET_PODCASTS, SET_PODCASTS_LISTENER } from './mutation-types';
+import { SET_TRACKS, SET_TRACKS_LISTENER } from './mutation-types';
 
 export default {
-  [SET_PODCASTS]: (state, podcasts) => (state.podcastsList = podcasts),
-  [SET_PODCASTS_LISTENER]: (state, value) => (state.podcastsListener = value)
+  [SET_TRACKS]: (state, tracks) => (state.trackList = tracks),
+  [SET_TRACKS_LISTENER]: (state, value) => (state.tracksListener = value)
 };
