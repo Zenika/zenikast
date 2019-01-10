@@ -11,6 +11,8 @@ import misc from '@/services/miscellaneous';
 import Vuetify from 'vuetify/lib';
 import VueAnalytics from 'vue-analytics';
 
+import { bindPodcasts } from './firebase/podcasts';
+
 Vue.use(Vuetify);
 
 if (process.env.NODE_ENV === 'production') {
@@ -30,4 +32,5 @@ new Vue({
 
 window.addEventListener('load', () => {
   misc.handleNetworkStatus();
+  store.dispatch('podcasts/setPodcastsListener', bindPodcasts());
 });
