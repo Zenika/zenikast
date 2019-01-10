@@ -1,4 +1,3 @@
-import { bindPodcasts } from './podcasts';
 import { fetchUserInfos } from './users-infos';
 import { handleUserCloudMessagingTokens } from './firebase-cloud-messaging';
 import firebase from 'firebase/app';
@@ -20,17 +19,10 @@ const login = async user => {
   }
 };
 
-const listenPodcasts = () => {
-  const podcastListener = bindPodcasts();
-  store.dispatch('podcasts/setPodcastsListener', podcastListener);
-};
-
 /**
  * Callback fire on user logout
  */
-export const logout = () => {
-  store.dispatch('podcasts/setPodcasts', null);
-  store.dispatch('podcasts/unsubscribePodcastsListener');
+const logout = () => {
   store.dispatch('authentication/setUserInfos', null);
 };
 
@@ -42,8 +34,7 @@ export const initAuthHandling = () => {
     if (user) {
       login(user);
     } else {
-      store.dispatch('authentication/setUserInfos', null);
+      logout();
     }
-    listenPodcasts();
   });
 };

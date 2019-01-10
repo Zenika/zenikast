@@ -39,18 +39,17 @@
 
 <script>
 import firebase from 'firebase/app';
+import { logout as firebaseLogout } from '@/firebase/firebase-auth'
 import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
     ...mapState('config', ['appTitle', 'networkOnLine']),
-    ...mapState('authentication', ['userInfos']),
-    ...mapActions('authentication', { userLogout: 'logout' })
+    ...mapState('authentication', ['userInfos'])
   },
   methods: {
     logout() {
       firebase.auth().signOut();
-      this.userLogout;
     }
   }
 };

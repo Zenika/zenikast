@@ -5,7 +5,7 @@
       <v-subheader class="header">
         <span>
           {{ podcastsList.length }} podcasts disponibles
-          <span v-if="isLoggedIn">- {{ newPodcasts.length }} nouveaux</span>
+          <span v-if="isUserLoggedIn">- {{ newPodcasts.length }} nouveaux</span>
         </span>
       </v-subheader>
       <!-- Podcasts List -->
@@ -41,7 +41,7 @@ export default {
       'newPodcasts'
     ]),
     ...mapState('authentication', ['userInfos']),
-    ...mapGetters('authentication', ['isLoggedIn'])
+    ...mapGetters('authentication', ['isUserLoggedIn'])
   },
   methods: {
     podcastClicked(podcast) {

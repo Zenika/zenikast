@@ -7,7 +7,7 @@ export default {
    * @param {Object} getters
    * @param {Object} rootState
    */
-  isLoggedIn: state => {
+  isUserLoggedIn: state => {
     return !isNil(state.userInfos);
   }
 };

@@ -43,9 +43,5 @@ export default {
         podcastsSeen: [...state.userInfos.podcastsSeen, podcastId]
       });
     }
-  },
-
-  logout: ({ dispatch }) => {
-    dispatch('setUserInfos', null);
   }
 };

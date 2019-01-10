@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <img alt="Logo" v-show="userInfos !== undefined && !userInfos" class="logo-img" src="@/assets/logo-title.png" />
+    <img alt="Logo" v-show="userInfos !== undefined && !isUserLoggedIn" class="logo-img" src="@/assets/logo-title.png" />
 
     <!-- Loader -->
     <div v-if="userInfos === undefined">
@@ -8,22 +8,25 @@
     </div>
 
     <!-- Auth UI -->
-    <div v-show="userInfos !== undefined && !userInfos" id="firebaseui-auth-container"></div>
+    <div v-show="userInfos !== undefined && !isUserLoggedIn" id="firebaseui-auth-container"></div>
 
     <!-- Already logged in message -->
-    <div class="wrapper" v-show="userInfos">
+    <div class="wrapper" v-show="isUserLoggedIn">
       <h2>Vous êtes déjà connecté.</h2>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import firebase from 'firebase/app';
 import firebaseui from 'firebaseui';
 
 export default {
-  computed: mapState('authentication', ['userInfos']),
+  computed: {
+    ...mapState('authentication', ['userInfos']),
+    ...mapGetters('authentication', ['isUserLoggedIn'])
+  },
   mounted() {
     this.initFirebaseUI();
   },
