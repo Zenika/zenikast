@@ -1,22 +1,22 @@
 <template>
-  <div class="tracks-list">
+  <div class="track-list">
     <div v-for="(track, index) in tracks" :key="track.name" class="player-wrapper">
-      <podcast-tracks-item :track="track" :autoplay="index === 0"></podcast-tracks-item>
+      <track-list-item :track="track" :autoplay="index === 0"></track-list-item>
     </div>
   </div>
 </template>
 
 <script>
-import PodcastTracksItem from '@/components/podcasts/PodcastTracksItem';
+import TrackListItem from '@/components/tracks/TrackListItem';
 
 export default {
-  components: { PodcastTracksItem },
+  components: { TrackListItem },
   props: { tracks: Array }
 };
 </script>
 
 <style lang="scss" scoped>
-.tracks-list /deep/ {
+.track-list /deep/ {
   .player-wrapper {
     padding: 20px;
 

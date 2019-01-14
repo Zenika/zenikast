@@ -15,7 +15,7 @@ export default {
       email,
       userId: user.uid,
       cloudMessagingTokens: [],
-      podcastsSeen: []
+      tracksSeen: []
     };
     const createdUserInfos = await firebaseUserInfos.createUserInfos(userInfos);
     dispatch('setUserInfos', createdUserInfos);
@@ -32,15 +32,13 @@ export default {
     dispatch('setUserInfos', newUserInfos);
   },
 
-  addPodcastSeenToUser: ({ state, dispatch }, podcastId) => {
-    const isPodcastNotSeen = isNil(
-      state.userInfos.podcastsSeen.find(
-        podcastSeenId => podcastSeenId === podcastId
-      )
+  addTrackSeenToUser: ({ state, dispatch }, trackId) => {
+    const isTrackNotSeen = isNil(
+      state.userInfos.tracksSeen.find(trackSeenId => trackSeenId === trackId)
     );
-    if (isPodcastNotSeen) {
+    if (isTrackNotSeen) {
       dispatch('updateUserInfos', {
-        podcastsSeen: [...state.userInfos.podcastsSeen, podcastId]
+        tracksSeen: [...state.userInfos.tracksSeen, trackId]
       });
     }
   }

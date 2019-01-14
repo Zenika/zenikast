@@ -1,7 +1,7 @@
 <template>
-  <div class="wrapper" v-if="podcast">
+  <div class="wrapper" v-if="track">
     <!-- Banner -->
-    <podcast-banner :podcast="podcast"></podcast-banner>
+    <track-banner :track="track"></track-banner>
 
     <!-- Main content -->
     <v-card class="content">
@@ -14,7 +14,7 @@
             Participants
           </div>
           <v-card>
-            <podcast-participants-list :participants="podcast.participants"></podcast-participants-list>
+            <track-participants-list :participants="track.participants"></track-participants-list>
           </v-card>
         </v-expansion-panel-content>
 
@@ -25,13 +25,13 @@
             Description
           </div>
           <v-card>
-            <v-card-text>{{podcast.description}}</v-card-text>
+            <v-card-text>{{track.description}}</v-card-text>
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
-      <!-- Tracks list -->
-      <podcast-tracks-list :tracks="podcast.tracks"></podcast-tracks-list>
+      <!-- Track player -->
+      <track-item :track="track"></track-item>
     </v-card>
   </div>
 </template>
@@ -39,30 +39,30 @@
 <script>
 import { isNil } from 'lodash';
 import { mapGetters, mapActions, mapState } from 'vuex';
-import PodcastBanner from '@/components/podcasts/PodcastBanner';
-import PodcastParticipantsList from '@/components/podcasts/PodcastParticipantsList';
-import PodcastTracksList from '@/components/podcasts/PodcastTracksList';
+import TrackBanner from '@/components/tracks/TrackBanner';
+import TrackParticipantsList from '@/components/tracks/TrackParticipantsList';
+import TrackItem from '@/components/tracks/TrackItem';
 
 export default {
-  components: { PodcastBanner, PodcastParticipantsList, PodcastTracksList },
-  props: { podcastId: String },
+  components: { TrackBanner, TrackParticipantsList, TrackItem },
+  props: { trackId: String },
   watch: {
     userInfos: {
       handler(value) {
         if (isNil(value)) return;
-        this.addPodcastSeenToUser(this.podcastId);
+        this.addTrackSeenToUser(this.trackId);
       },
       immediate: true
     }
   },
   computed: {
     ...mapState('authentication', ['userInfos']),
-    ...mapGetters('podcasts', ['podcastById']),
-    podcast() {
-      return this.podcastById(this.podcastId);
+    ...mapGetters('tracks', ['trackById']),
+    track() {
+      return this.trackById(this.trackId);
     }
   },
-  methods: mapActions('authentication', ['addPodcastSeenToUser'])
+  methods: mapActions('authentication', ['addTrackSeenToUser'])
 };
 </script>
 

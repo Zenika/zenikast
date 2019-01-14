@@ -3,7 +3,7 @@ service cloud.firestore {
     function authenticated() { return request.auth.uid != null }
     function isMe() { return request.auth.uid == request.resource.data.userId }
 
-    match /podcasts/{podcastId} {
+    match /tracks/{trackId} {
       allow get
       allow list
     }

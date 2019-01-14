@@ -1,7 +1,7 @@
 <template>
   <div class="header" :style="{ 'background-image': 'url(' + banner + ')' }">
-    <h1 class="podcast-name">{{podcast.name}}</h1>
-    <h3 class="podcast-create-date">Émission du {{formatedDate}}</h3>
+    <h1 class="track-name">{{track.name}}</h1>
+    <h3 class="track-create-date">Émission du {{formatedDate}}</h3>
   </div>
 </template>
 
@@ -10,11 +10,11 @@ import { format } from 'date-fns';
 import banner from '@/assets/banner.jpeg';
 
 export default {
-  props: { podcast: Object },
+  props: { track: Object },
   data: () => ({ banner }),
   computed: {
     formatedDate() {
-      return format(this.podcast.createTimestamp, 'DD/MM/YYYY');
+      return format(this.track.createTimestamp, 'DD/MM/YYYY');
     }
   }
 };
@@ -32,7 +32,7 @@ export default {
   background-size: cover;
   height: 140px;
 
-  .podcast-name {
+  .track-name {
     font-size: 40px;
     text-shadow: 0 0 0.3em #333, 0 0 0.3em #333, 0 0 0.3em #333;
 
@@ -41,7 +41,7 @@ export default {
     }
   }
 
-  .podcast-create-date {
+  .track-create-date {
     text-shadow: 0 0 0.3em #333, 0 0 0.3em #333, 0 0 0.3em #333;
     font-size: 20px;
     margin-top: 10px;
@@ -52,13 +52,13 @@ export default {
     }
   }
 
-  .podcast-description {
+  .track-description {
     margin-top: 20px;
     font-size: 15px;
     max-width: 800px;
   }
 
-  .podcast-participants-title {
+  .track-participants-title {
     margin-bottom: 10px;
   }
 

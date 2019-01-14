@@ -1,23 +1,23 @@
 <template>
   <div class="wrapper">
-    <template v-if="podcastsList">
+    <template v-if="trackList">
       <!-- Header -->
       <v-subheader class="header">
         <span>
-          {{ podcastsList.length }} podcasts disponibles
-          <span v-if="isUserLoggedIn">- {{ newPodcasts.length }} nouveaux</span>
+          {{ trackList.length }} pistes disponibles
+          <span v-if="isUserLoggedIn">- {{ newTracks.length }} nouveaux</span>
         </span>
       </v-subheader>
-      <!-- Podcasts List -->
+      <!-- Track List -->
       <v-list class="list" two-line>
-        <template v-for="(podcast, index) in podcastsOrderedBy('createTimestamp', 'desc')">
+        <template v-for="(track, index) in tracksOrderedBy('createTimestamp', 'desc')">
           <v-divider :key="index" v-if="index !== 0"></v-divider>
-          <podcasts-list-item
-            @click.native="podcastClicked(podcast)"
-            :isNew="isPodcastNew(podcast.id)"
-            :podcast="podcast"
-            :key="podcast.id">
-          </podcasts-list-item>
+          <track-list-item
+            @click.native="trackClicked(track)"
+            :isNew="isTrackNew(track.id)"
+            :track="track"
+            :key="track.id">
+          </track-list-item>
         </template>
       </v-list>
     </template>
@@ -28,26 +28,22 @@
 </template>
 
 <script>
-import PodcastsListItem from '@/components/podcasts/PodcastsListItem';
+import TrackListItem from '@/components/tracks/TrackListItem';
 import { mapState, mapGetters } from 'vuex';
 
 export default {
-  components: { PodcastsListItem },
+  components: { TrackListItem },
   computed: {
-    ...mapState('podcasts', ['podcastsList']),
-    ...mapGetters('podcasts', [
-      'podcastsOrderedBy',
-      'isPodcastNew',
-      'newPodcasts'
-    ]),
+    ...mapState('tracks', ['trackList']),
+    ...mapGetters('tracks', ['tracksOrderedBy', 'isTrackNew', 'newTracks']),
     ...mapState('authentication', ['userInfos']),
     ...mapGetters('authentication', ['isUserLoggedIn'])
   },
   methods: {
-    podcastClicked(podcast) {
+    trackClicked(track) {
       this.$router.push({
-        name: 'podcast',
-        params: { podcastId: podcast.id }
+        name: 'track',
+        params: { trackId: track.id }
       });
     }
   }

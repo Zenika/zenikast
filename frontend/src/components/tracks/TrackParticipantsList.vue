@@ -2,17 +2,17 @@
   <v-list>
     <template v-for="(participant, index) in participants">
       <v-divider :key="index"></v-divider>
-      <podcast-participant-item :key="participant.lastname" :participant="participant"></podcast-participant-item>
+      <track-participant-item :key="participant.lastname" :participant="participant"></track-participant-item>
     </template>
   </v-list>
 </template>
 
 <script>
-import PodcastParticipantItem from '@/components/podcasts/PodcastParticipantItem';
+import TrackParticipantItem from '@/components/tracks/TrackParticipantItem';
 
 export default {
   props: { participants: Array },
-  components: { PodcastParticipantItem }
+  components: { TrackParticipantItem }
 };
 </script>
 
