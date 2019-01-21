@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "zenikast-a6114"
+    "default": "zenikast-dev",
+    "dev": "zenikast-dev",
+    "prod": "zenikast-a6114"
   }
 }
